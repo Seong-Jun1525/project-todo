@@ -1,0 +1,13 @@
+.content {
+  background-color: white;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 3rem;
+}
+
+.content div {
+  width: 100%;
+  margin-bottom: 1rem;
+}
