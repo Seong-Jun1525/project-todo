@@ -22,3 +22,17 @@ export const authCode = async (email, code) => {
   });
   if (response.status === 200) return response.data;
 };
+
+export const checkId = async (userId) => {
+  console.log(userId);
+
+  const response = await apiAxios.post("/checkId", {
+    userId: userId,
+  });
+  if (response.status === 200) return response.data;
+};
+
+export const registerUser = async (user) => {
+  const response = await apiAxios.post("/user", user);
+  if (response.status === 200) return response.data;
+};

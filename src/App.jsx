@@ -5,21 +5,25 @@ import TodoMain from "./components/todo/TodoMain";
 import CompletedTodo from "./components/todo/content/completed/CompletedTodo";
 import DeletedTodo from "./components/todo/content/deleted/DeletedTodo";
 import Doing from "./components/todo/content/doing/Doing";
+import { ToastContainer } from "react-toastify";
 
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route index element={<MainContent />} />
-        <Route path="/register" element={<Register />} />
+    <>
+      <BrowserRouter>
+        <Routes>
+          <Route index element={<MainContent />} />
+          <Route path="/register" element={<Register />} />
 
-        <Route path="/todos" element={<TodoMain />}>
-          <Route index element={<Doing />} />
-          <Route path="completed" element={<CompletedTodo />} />
-          <Route path="deleted" element={<DeletedTodo />} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
+          <Route path="/todos" element={<TodoMain />}>
+            <Route index element={<Doing />} />
+            <Route path="completed" element={<CompletedTodo />} />
+            <Route path="deleted" element={<DeletedTodo />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+      <ToastContainer />
+    </>
   );
 }
 
