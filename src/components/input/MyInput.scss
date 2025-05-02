@@ -17,3 +17,19 @@ input {
   border: 0.1rem solid #ccc;
   margin-bottom: 0;
 }
+
+.input-check-area {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.input-check-area > input {
+  margin-bottom: 0;
+}
+
+.btn-check {
+  width: 25%;
+  background-color: white;
+  border: 0.1rem solid #ccc;
+}

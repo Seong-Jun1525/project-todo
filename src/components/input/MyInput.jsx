@@ -1,8 +1,8 @@
 import React from "react";
 import "./MyInput.scss";
 
-export const MyInput = ({ typeText, placeholderValue, nameValue, style }) => {
-  return <input style={style} className="my-input-text" name={nameValue} type={typeText} placeholder={placeholderValue} />;
+export const MyInput = (props) => {
+  return <input {...props} />;
 };
 
 export const SearchInput = ({ searchName }) => {
