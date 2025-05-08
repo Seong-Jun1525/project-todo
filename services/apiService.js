@@ -36,3 +36,10 @@ export const registerUser = async (user) => {
   const response = await apiAxios.post("/user", user);
   if (response.status === 200) return response.data;
 };
+
+// 로그인
+export const login = async ({ userId, userPwd }) => {
+  const loginInfo = { userId, userPwd };
+  const response = await apiAxios.post("/login", loginInfo);
+  if (response.status === 200) return response.data;
+};

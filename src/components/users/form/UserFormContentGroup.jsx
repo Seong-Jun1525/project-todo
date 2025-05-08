@@ -1,23 +1,55 @@
 import React, { useState } from "react";
 import "./UserFormContentGroup.scss";
-import MyButton from "../btn/MyButton";
 import { Link } from "react-router-dom";
 import { MyInput } from "../../input/MyInput";
-import { authCode, checkId, registerUser, sendEmail } from "../../../../services/apiService";
+import { authCode, checkId, login, registerUser, sendEmail } from "../../../../services/apiService";
 import { errorAlert, successAlter } from "../../../../services/toastUtils";
 
 export const UserLoginFormContent = () => {
+  const [userId, setUserId] = useState("");
+  const [userPwd, setUserPwd] = useState("");
+
+  const loginHandler = async () => {
+    console.log(userId);
+    console.log(userPwd);
+    const result = await login({ userId, userPwd });
+
+    if (result === "success") {
+      successAlter("로그인 성공!");
+      setTimeout(() => {
+        location.href = "/todos";
+      }, 1000);
+    } else {
+      errorAlert("로그인 실패!");
+    }
+  };
+
   return (
-    <form action="" method="get" className="login-form">
-      <MyInput type="text" placeholder="아이디" name="userId" />
-      <MyInput type="password" placeholder="비밀번호" name="userPwd" />
+    <div className="login-form">
+      <MyInput
+        type="text"
+        placeholder="아이디"
+        name="userId"
+        value={userId}
+        onChange={(e) => {
+          setUserId(e.target.value);
+        }}
+      />
+      <MyInput
+        type="password"
+        placeholder="비밀번호"
+        name="userPwd"
+        onChange={(e) => {
+          setUserPwd(e.target.value);
+        }}
+      />
       <div className="btn-group">
-        <MyButton className="btn-submit" btnText="로그인" />
+        <MyInput type="submit" className="btn-submit" value="로그인" onClick={loginHandler} />
         <Link className="btn-register" to="/register">
           회원가입
         </Link>
       </div>
-    </form>
+    </div>
   );
 };
 
