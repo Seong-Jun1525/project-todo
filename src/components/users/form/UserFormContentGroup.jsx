@@ -1,13 +1,16 @@
 import React, { useState } from "react";
 import "./UserFormContentGroup.scss";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { MyInput } from "../../input/MyInput";
 import { authCode, checkId, login, registerUser, sendEmail } from "../../../../services/apiService";
 import { errorAlert, successAlter } from "../../../../services/toastUtils";
 
-export const UserLoginFormContent = () => {
+export const UserLoginFormContent = ({ setIsLogin }) => {
   const [userId, setUserId] = useState("");
   const [userPwd, setUserPwd] = useState("");
+
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const loginHandler = async () => {
     console.log(userId);
@@ -16,9 +19,8 @@ export const UserLoginFormContent = () => {
 
     if (result === "success") {
       successAlter("로그인 성공!");
-      setTimeout(() => {
-        location.href = "/todos";
-      }, 1000);
+      setIsLogin(true);
+      localStorage.setItem("loginInfo", true); // 로그인 여부 저장
     } else {
       errorAlert("로그인 실패!");
     }

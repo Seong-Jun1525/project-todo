@@ -3,7 +3,7 @@ import "./Login.scss";
 import "../UserMainContent.scss";
 import { UserLoginFormContent } from "../form/UserFormContentGroup";
 
-const Login = () => {
+const Login = (props) => {
   return (
     <div className="content">
       <div className="login-content-title">
@@ -11,7 +11,7 @@ const Login = () => {
         <br />
         MANAGER
       </div>
-      <UserLoginFormContent />
+      <UserLoginFormContent {...props} />
     </div>
   );
 };
