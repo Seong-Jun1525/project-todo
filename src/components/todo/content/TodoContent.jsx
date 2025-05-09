@@ -1,14 +1,16 @@
-import React from "react";
+import { TodoProvider } from "../contexts/TodoContext";
+import TodoInput from "./todo/TodoInput";
 import "./TodoContent.scss";
-import { Outlet } from "react-router-dom";
-import SearchContent from "./search/SearchContent";
+import TodoList from "./TodoList";
 
 const TodoContent = () => {
   return (
-    <div className="todo-content-container">
-      <SearchContent />
-      <Outlet />
-    </div>
+    <TodoProvider>
+      <div className="todo-content-container">
+        <TodoInput />
+        <TodoList />
+      </div>
+    </TodoProvider>
   );
 };
 
